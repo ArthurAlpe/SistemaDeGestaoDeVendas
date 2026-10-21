@@ -30,6 +30,9 @@ public class ItemVenda {
         this.id = id;
     }
 
+    public ItemVenda() {
+    }//Construtor vazio
+
     public void setQuantidade(Integer quantidade) {
         this.quantidade = quantidade;
     }
@@ -43,6 +46,8 @@ public class ItemVenda {
     public Double calcularTotal() {
         return quantidade * precoUnitario;
     }
+
+
 
 
 
