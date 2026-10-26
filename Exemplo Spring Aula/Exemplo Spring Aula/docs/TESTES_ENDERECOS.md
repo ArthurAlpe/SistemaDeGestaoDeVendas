@@ -53,3 +53,84 @@ entre entidade e DTO.
 *(As evidências no Postman dessas regras serão adicionadas após o Controller.)*
 
 ![Compilação do projeto com sucesso após o service](enderecos/service-evidence.png)
+
+## 5. Testes dos endpoints
+
+### POST /api/enderecos (cadastro)
+- **Resultado:** 201 Created. CEP salvo sem hífen e estado em maiúsculas.
+
+![POST cadastro](enderecos/01-post-sucesso.png)
+
+### GET /api/enderecos (listar todos)
+- **Resultado:** 200 OK.
+
+![GET todos](enderecos/02-get-todos.png)
+
+### GET /api/enderecos/{id} (buscar por ID)
+- **Resultado:** 200 OK.
+
+![GET por ID](enderecos/03-get-por-id.png)
+
+### PUT /api/enderecos/{id} (atualizar)
+- **Resultado:** 200 OK. Bairro atualizado para "Zona 8".
+
+![PUT](enderecos/04-put-sucesso.png)
+
+### DELETE /api/enderecos/{id} (excluir)
+- **Resultado:** 204 No Content.
+
+![DELETE](enderecos/13-delete-sucesso-204.png)
+
+## 3. Testes de situações inválidas
+
+### Cadastro duplicado
+- **Resultado:** 409 Conflict.
+
+![POST duplicado](enderecos/05-post-duplicado-409.png)
+
+### Consultar ID inexistente
+- **Resultado:** 404 Not Found.
+
+![GET inexistente](enderecos/06-get-inexistente-404.png)
+
+### Atualizar ID inexistente
+- **Resultado:** 404 Not Found.
+
+![PUT inexistente](enderecos/07-put-inexistente-404.png)
+
+### Excluir ID inexistente
+- **Resultado:** 404 Not Found.
+
+![DELETE inexistente](enderecos/08-delete-inexistente-404.png)
+
+### Dados inválidos: campos obrigatórios vazios
+- **Resultado:** 400 Bad Request, com os campos obrigatórios listados.
+
+![Campos vazios](enderecos/09-post-campos-vazios-400.png)
+
+### Dados inválidos: CEP fora do formato
+- **Resultado:** 400 Bad Request.
+
+![CEP inválido](enderecos/10-post-cep-invalido-400.png)
+
+### Corpo da requisição malformado
+- **Resultado:** 400 Bad Request.
+
+![JSON malformado](enderecos/12-post-json-malformado-400.png)
+
+### Consulta após exclusão
+- **Resultado:** 404 Not Found.
+
+![GET apagado](enderecos/14-get-apagado-404.png)
+
+## 4. Regras de negócio
+
+### Regra 01: CEP normalizado e UF válida
+- Normalização do CEP: ver cadastro válido (teste 01).
+- UF inexistente devolve 400:
+
+![Estado XX](enderecos/11-post-estado-xx-400.png)
+
+### Regra 02: endereço duplicado
+- Cadastro repetido devolve 409 (ver teste 05).
+- Atualização mantendo os próprios dados continua devolvendo 200 (ver teste 04).
