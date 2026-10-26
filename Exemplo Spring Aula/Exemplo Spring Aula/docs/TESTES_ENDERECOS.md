@@ -11,3 +11,9 @@ para a regra de duplicidade (cadastro e atualização). Ao subir a aplicação, 
 reconhece o repository e valida os nomes dos métodos contra a entidade.
 
 ![Aplicação subindo com o repository reconhecido](enderecos/repository-startup.png)
+
+### 1.3 DTO
+
+A classe `EnderecoDTO` define os dados utilizados na transferência de informações de endereços pela API. Possui validações para campos obrigatórios, limites de caracteres e formato do CEP. A classe foi criada e integrada ao projeto, porém suas validações serão testadas durante a implementação do Controller e dos endpoints.
+
+![Aplicação iniciada após a criação do DTO](enderecos/dto-startup.png)
