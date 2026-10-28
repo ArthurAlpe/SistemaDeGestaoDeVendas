@@ -1,4 +1,4 @@
-package com.example.demo.service.Utils;
+package com.example.demo.service;
 
 public class ErrorResponse {
     private String error;

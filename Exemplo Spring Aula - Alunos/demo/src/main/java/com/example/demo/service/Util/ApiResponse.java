@@ -1,4 +1,4 @@
-package com.example.demo.service.Utils;
+package com.example.demo.service.Util;
 
 public class ApiResponse<T> {
     
