@@ -20,7 +20,7 @@ public class FormaDePagamentoService  {
             return formaDePagamentoRepository.findById(id);
     }
 
-        public FormaDePagamentoEntity save(FormaDePagamentoEntity formaDePagamentoEntity){
+        public FormaDePagamentoEntity salvar(FormaDePagamentoEntity formaDePagamentoEntity){
             return formaDePagamentoRepository.save(formaDePagamentoEntity);
     }
 
