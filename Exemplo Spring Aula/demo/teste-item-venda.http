@@ -1,0 +1,16 @@
+### GET request to example server
+GET https://examples.http-client.intellij.net/get
+    ?generated-in=IntelliJ IDEA
+
+###cadastrar um item de venda
+POST http://localhost:8080/itens-venda
+Content-Type: application/json
+
+{
+  "id": 3,
+  "quantidade": 5,
+  "precoUnitario": 25.0
+}
+
+### Consultar todos os itens
+GET http://localhost:8080/itens-venda
