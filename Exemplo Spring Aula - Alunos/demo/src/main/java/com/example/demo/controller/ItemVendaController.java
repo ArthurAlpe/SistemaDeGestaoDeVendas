@@ -28,19 +28,41 @@ public class ItemVendaController {
         return service.listaritens();
     }
 
+
+    @GetMapping("/itens-venda/{id}")
+    public ResponseEntity<ItemVenda> buscarPorId(@PathVariable Long id) {
+
+        ItemVenda item = service.buscarPorId(id);
+
+        if (item == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok(item);
+    }
+
+
     //Cria uma rota para receber requisições POST
     @PostMapping("/itens-venda") //
     public ItemVenda cadstrarItem(@RequestBody ItemVenda item) { // Converte os dados JSON recebidos em um objeto Java
         return service.cadastrarItem(item);// Solicita ao Service que cadastre o item
     }
 
+
     @PutMapping("/itens-venda/{id}")
-    public ItemVenda atualizarItem(
+    public ResponseEntity<ItemVenda> atualizarItem(
             @PathVariable Long id,
             @RequestBody ItemVenda novosDados) {
 
-        return service.atualizarItem(id, novosDados);
+        ItemVenda atualizado = service.atualizarItem(id, novosDados);
+
+        if (atualizado == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok(atualizado);
     }
+
 
 
     @DeleteMapping("/itens-venda/{id}")
