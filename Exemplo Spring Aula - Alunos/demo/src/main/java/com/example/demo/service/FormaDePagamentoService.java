@@ -39,9 +39,13 @@ public class FormaDePagamentoService {
     }
 
     public void deletar(Long id) {
+        if (!formaDePagamentoRepository.existsById(id)) {
+            throw new FormaDePagamentoNaoEncontradaException(
+                    "Forma de pagamento não encontrada com ID: " + id);
+        }
+
         formaDePagamentoRepository.deleteById(id);
     }
-
     @Autowired
     private FormaDePagamentoMapper formaDePagamentoMapper;
 
