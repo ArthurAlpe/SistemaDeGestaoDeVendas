@@ -1,6 +1,11 @@
 package com.example.demo.entity;
 
-import jakarta.persistence.*;                                 //importando todas as classes do pacote jakarta
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Column;                               //importando todas as classes do pacote jakarta
 
 import lombok.Data;
 
