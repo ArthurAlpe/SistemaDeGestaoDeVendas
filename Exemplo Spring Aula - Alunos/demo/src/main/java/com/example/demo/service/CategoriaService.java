@@ -28,7 +28,7 @@ public class CategoriaService {
 
     private void validarCategoria(Categoria categoria){
         if (categoria == null || categoria.getNome() == null || categoria.getNome().isBlank()){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("O nome da categoria é obrigadorio");
         }
     }
 
