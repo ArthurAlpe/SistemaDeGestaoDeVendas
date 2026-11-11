@@ -1,6 +1,7 @@
 package com.example.demo.mapper;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -14,7 +15,16 @@ public interface EnderecoMapper {
     EnderecoDTO toDTO(Endereco endereco);
 
     Endereco toEntity(EnderecoDTO dto);
-    List<EnderecoDTO> toDTOList(List<Endereco> enderecos);
+
+    default List<EnderecoDTO> toDTOList(List<Endereco> enderecos) {
+        if (enderecos == null) {
+            return null;
+        }
+
+        return enderecos.stream()
+                .map(this::toDTO)
+                .collect(Collectors.toList());
+    }
 
     //Usado no PUT: copia os dados do DTO para a entidade existente.
     @Mapping(target = "id", ignore = true)
