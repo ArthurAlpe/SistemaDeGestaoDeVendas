@@ -4,6 +4,8 @@ package com.example.demo.service;
 import com.example.demo.entity.Categoria;
 import com.example.demo.repository.CategoriaRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 import java.util.Optional;
 
@@ -53,7 +55,10 @@ public class CategoriaService {
             return categoriaRepository.save(categoria);
 
         }
-            throw new IllegalArgumentException("Categoria nao encontrada");
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND,
+                    "Categoria não encontrado"
+            );
     }
 
     public Categoria deletar(Long id){
@@ -66,7 +71,11 @@ public class CategoriaService {
             categoriaRepository.delete(categoria);
             return categoria;
         }
-        throw new IllegalArgumentException("Categoria nao encontrada");
+
+        throw new ResponseStatusException(
+                HttpStatus.NOT_FOUND,
+                "Categoria não encontrado"
+        );
     }
 
 }
